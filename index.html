@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Lesson32-20180621</title>
+	</head>
+	<body>
+		<img src="DZ_1529602928.JPG" alt="DZ_1529602928.JPG">
+		<script type="text/javascript">
+			'use strict';
+			function getNewCar(make, model, year, color, passandgers, convertible, milage){
+				let car = {
+					make: make,
+					model :model,
+					year : year,
+					color: color,
+					passandgers : passandgers,
+					convertible:convertible,
+					milage : milage,
+					started : false,
+					getName : function(){
+						return this.make + ' ' + this.model;
+					},
+					start : function(){
+						console.log(this.getName() + '/start', Object.assign({}, this));
+						this.started = true;
+					},
+					stop : function(){
+						console.log(this.getName() + '/stop', Object.assign({}, this));
+						this.started = false;
+					},
+					drive : function(){
+						console.log(this.getName() + '/drive', Object.assign({}, this));
+						if(this.started){
+							alert(this.getName() + ' goes zoom zoom!')
+						} else {
+							alert (this.getName() + " You need to start the engine first!")
+						}
+					}
+				}
+				return car;
+			}
+			let cady = getNewCar('GM', 'Caddillac', 1955, 'tan', 5, false, 12892),
+					chevy = getNewCar('Chevy', 'Bel Air', 1957, 'red', 2, false, 1021),
+					taxi = getNewCar('Webville Motors', 'Taxi', 1955, 'yellow', 4, false, 281341)
+			;
+			[cady, chevy, taxi].forEach(function(car){
+				car.drive();
+				car.start();
+				car.drive();
+				car.stop();
+			});
+			alert ('See debug info in web browser console. Press F12 or CTRL+SHIFT+I')
+
+		</script>
+	</body>
+</html>
